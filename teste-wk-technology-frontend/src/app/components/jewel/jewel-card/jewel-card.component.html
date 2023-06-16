@@ -1,0 +1,20 @@
+
+<div class="jewels-card-container">
+    <mat-card *ngFor="let jewel of jewels" class="jewels-card mat-elevation-z10">
+        <mat-card-header>
+          <mat-card-title>{{jewel.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{jewel.imgUrl}}" alt="jewel-card-img">
+        <mat-card-content>
+          <div class="jewel-description">
+            <p>
+              Descrição: {{jewel.description}}
+            </p>
+          </div>
+          <h4>Peso: {{jewel.weight}}</h4>
+          <h4>Tamanho: {{jewel.size}}</h4>
+          <h4>Preço: R${{jewel.price}}</h4>
+         
+        </mat-card-content>
+    </mat-card>
+</div>

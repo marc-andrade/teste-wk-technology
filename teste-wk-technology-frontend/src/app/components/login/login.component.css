@@ -1,0 +1,58 @@
+.container {
+   height: 100%;
+   background: rgb(31, 23, 23);
+   border-top: 5px solid rgb(31, 23, 23);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.form {
+   height: 30rem;
+   width: 30rem;
+   margin: auto;
+   color: rgb(90, 237, 131);
+   background-color: rgb(31, 23, 23);
+   padding: 4rem 1rem;
+   border: 3px solid rgb(90, 237, 131);
+   border-radius: 1rem;
+}
+
+h1 {
+   width: 100%;
+   text-align: center; 
+}
+
+img {
+   height: 15rem;
+   width: 100%;
+   margin: 1.5rem auto 1.5rem auto;
+}
+
+.full-width {
+   width: 100%;
+}
+
+mat-icon {
+   opacity: .6;
+}
+
+mat-label,::-webkit-input-placeholder,.btn,input{
+   color:  rgb(90, 237, 131);
+   
+}
+
+input:-webkit-autofill {
+   -webkit-box-shadow: 0 0 0 30px rgb(31, 23, 23) inset;
+}
+
+/* Cor do texto do autocomplete */
+input:-webkit-autofill {
+   -webkit-text-fill-color: rgb(90, 237, 131) !important;
+}
+
+.btn{
+   border: 1px solid rgb(90, 237, 131);
+}
+
+
