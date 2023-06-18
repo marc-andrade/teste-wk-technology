@@ -12,4 +12,6 @@ public interface DoadorDeSangueRepository extends JpaRepository<DoadorDeSangue, 
     @Query("SELECT new com.marcos.testeWkTechnology.entities.dto.QuantidadePorEstadoDTO(d.estado, COUNT(d))" +
             " FROM DoadorDeSangue d GROUP BY d.estado")
     List<QuantidadePorEstadoDTO> findQuantidadePorEstado();
+
+    List<DoadorDeSangue> findBySexo(String masculino);
 }

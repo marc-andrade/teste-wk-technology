@@ -2,6 +2,7 @@ package com.marcos.testeWkTechnology.resource;
 
 import com.marcos.testeWkTechnology.entities.dto.DoadorDeSangueDTO;
 import com.marcos.testeWkTechnology.entities.dto.IMCMedioPorFaixaIdadeDTO;
+import com.marcos.testeWkTechnology.entities.dto.PercentualObesosGeneroDTO;
 import com.marcos.testeWkTechnology.entities.dto.QuantidadePorEstadoDTO;
 import com.marcos.testeWkTechnology.services.DoadorDeSangueService;
 import lombok.RequiredArgsConstructor;
@@ -32,4 +33,8 @@ public class DoadorDeSangueResource {
         return ResponseEntity.ok().body(service.getIMCMedioPorFaixaIdade());
     }
 
+    @GetMapping("/percentual-obesos-genero")
+    public ResponseEntity<List<PercentualObesosGeneroDTO>> getPercentualObesosGenero(){
+        return ResponseEntity.ok().body(service.getPercentualObesosGenero());
+    }
 }
