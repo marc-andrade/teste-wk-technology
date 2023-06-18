@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.marcos</groupId>
-    <artifactId>MRC-jewels-catalog</artifactId>
+    <artifactId>teste</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>MRC-jewels-catalog</name>
     <description>MRC-jewels-catalog</description>

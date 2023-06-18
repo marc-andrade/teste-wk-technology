@@ -1,4 +1,4 @@
-package com.marcos.testeWkTechnology.entities.dto;
+package com.marcos.testeWkTechnology.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

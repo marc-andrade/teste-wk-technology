@@ -1,4 +1,4 @@
-package com.marcos.testeWkTechnology.entities.dto;
+package com.marcos.testeWkTechnology.dto;
 
 import com.marcos.testeWkTechnology.entities.Role;
 import lombok.AllArgsConstructor;

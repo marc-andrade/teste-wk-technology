@@ -1,10 +1,8 @@
 package com.marcos.testeWkTechnology.services;
 
+import com.marcos.testeWkTechnology.dto.*;
 import com.marcos.testeWkTechnology.entities.DoadorDeSangue;
-import com.marcos.testeWkTechnology.entities.dto.DoadorDeSangueDTO;
-import com.marcos.testeWkTechnology.entities.dto.IMCMedioPorFaixaIdadeDTO;
-import com.marcos.testeWkTechnology.entities.dto.PercentualObesosGeneroDTO;
-import com.marcos.testeWkTechnology.entities.dto.QuantidadePorEstadoDTO;
+import com.marcos.testeWkTechnology.entities.enums.TipoSanguineoEnum;
 import com.marcos.testeWkTechnology.repositories.DoadorDeSangueRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -13,8 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -37,6 +34,7 @@ public class DoadorDeSangueService {
     public List<IMCMedioPorFaixaIdadeDTO> getIMCMedioPorFaixaIdade() {
 
         List<DoadorDeSangue> doadores = repository.findAll();
+
         int faixaInicial = 0;
         int faixaFinal = 10;
         int faixaFinalMaxima = 120;
@@ -135,4 +133,102 @@ public class DoadorDeSangueService {
         return Math.round(percentual * 100.0) / 100.0;
     }
 
+    public List<MediaIdadePorTipoSanguineoDTO> getMediaIdadePorTipoSaguineo() {
+
+        List<DoadorDeSangue> doadores = repository.findAll();
+
+        Map<String, Integer> somaIdadesPorTipoSanguineo = new HashMap<>();
+        Map<String, Integer> contadorPorTipoSanguineo = new HashMap<>();
+
+        for (DoadorDeSangue doador : doadores) {
+            String tipoSanguineo = doador.getTipoSanguineo();
+            int idade = calcularIdade(doador.getDataNascimento());
+
+            somaIdadesPorTipoSanguineo
+                    .put(tipoSanguineo, somaIdadesPorTipoSanguineo.getOrDefault(tipoSanguineo, 0) + idade);
+            contadorPorTipoSanguineo.
+                    put(tipoSanguineo, contadorPorTipoSanguineo.getOrDefault(tipoSanguineo, 0) + 1);
+        }
+
+        List<MediaIdadePorTipoSanguineoDTO> resultados = new ArrayList<>();
+
+        for (String tipoSanguineo : somaIdadesPorTipoSanguineo.keySet()) {
+            int somaIdades = somaIdadesPorTipoSanguineo.get(tipoSanguineo);
+            int contador = contadorPorTipoSanguineo.get(tipoSanguineo);
+            double mediaIdade = (double) somaIdades / contador;
+            mediaIdade = Math.round(mediaIdade * 100.0) / 100.0;
+
+            MediaIdadePorTipoSanguineoDTO resultado = new MediaIdadePorTipoSanguineoDTO();
+            resultado.setTipoSanguineo(tipoSanguineo);
+            resultado.setMediaIdade(mediaIdade);
+
+            resultados.add(resultado);
+        }
+
+        resultados.sort(Comparator.comparing(MediaIdadePorTipoSanguineoDTO::getTipoSanguineo));
+
+        return resultados;
+    }
+
+    public List<QuantidadeDoadoresPorTipoSanguineoReceptorDTO> getQuantidadePossiveisDoadores() {
+
+        List<DoadorDeSangue> doadores = repository.findAll();
+        List<QuantidadeDoadoresPorTipoSanguineoReceptorDTO> resposta = new ArrayList<>();
+
+        for (TipoSanguineoEnum tipoSanguineoReceptor : TipoSanguineoEnum.values()) {
+            long quantidadeDoadores = 0;
+
+            for (DoadorDeSangue doador : doadores) {
+                int idade = calcularIdade(doador.getDataNascimento());
+
+                if (isElegivelParaDoacao(idade, doador.getPeso())) {
+                    if(isCompativel(tipoSanguineoReceptor,doador.getTipoSanguineo())){
+                        quantidadeDoadores++;
+                    }
+                }
+            }
+            //criar e adiconar na lista
+            resposta.add(new QuantidadeDoadoresPorTipoSanguineoReceptorDTO
+                    (tipoSanguineoReceptor.getDescricao(),quantidadeDoadores));
+        }
+
+        return resposta;
+    }
+
+    private boolean isElegivelParaDoacao(int idade, double peso) {
+        return idade >= 16 && idade <= 69 && peso > 50;
+    }
+
+    private boolean isCompativel(TipoSanguineoEnum tipoSanguineoReceptor, String doador) {
+
+        return switch (tipoSanguineoReceptor) {
+            case A_POSITIVO -> Objects.equals(doador, TipoSanguineoEnum.A_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.A_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+            case A_NEGATIVO -> Objects.equals(doador, TipoSanguineoEnum.A_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+            case B_POSITIVO -> Objects.equals(doador, TipoSanguineoEnum.B_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.B_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+            case B_NEGATIVO -> Objects.equals(doador, TipoSanguineoEnum.B_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+            case AB_POSITIVO -> Objects.equals(doador, TipoSanguineoEnum.A_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.A_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.B_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.B_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.AB_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.AB_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+            case AB_NEGATIVO -> Objects.equals(doador, TipoSanguineoEnum.A_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.B_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.AB_NEGATIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+            case O_POSITIVO -> Objects.equals(doador, TipoSanguineoEnum.O_POSITIVO.getDescricao())
+                    || Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+            case O_NEGATIVO -> Objects.equals(doador, TipoSanguineoEnum.O_NEGATIVO.getDescricao());
+        };
+    }
 }

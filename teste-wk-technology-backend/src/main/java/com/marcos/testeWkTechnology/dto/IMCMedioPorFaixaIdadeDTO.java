@@ -1,4 +1,4 @@
-package com.marcos.testeWkTechnology.entities.dto;
+package com.marcos.testeWkTechnology.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PercentualObesosGeneroDTO {
-    private String genero;
-    private Double percentual;
+public class IMCMedioPorFaixaIdadeDTO {
+    private String faixaIdade;
+    private Double imcMedio;
 }

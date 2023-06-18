@@ -1,6 +1,6 @@
 package com.marcos.testeWkTechnology.resource;
 
-import com.marcos.testeWkTechnology.entities.dto.UserDTO;
+import com.marcos.testeWkTechnology.dto.UserDTO;
 import com.marcos.testeWkTechnology.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -2,8 +2,8 @@ package com.marcos.testeWkTechnology.services;
 
 import com.marcos.testeWkTechnology.entities.Role;
 import com.marcos.testeWkTechnology.entities.User;
-import com.marcos.testeWkTechnology.entities.dto.RoleDTO;
-import com.marcos.testeWkTechnology.entities.dto.UserDTO;
+import com.marcos.testeWkTechnology.dto.RoleDTO;
+import com.marcos.testeWkTechnology.dto.UserDTO;
 import com.marcos.testeWkTechnology.repositories.RoleRepository;
 import com.marcos.testeWkTechnology.repositories.UserRepository;
 import com.marcos.testeWkTechnology.services.exceptions.DatabaseException;

@@ -1,9 +1,6 @@
 package com.marcos.testeWkTechnology.resource;
 
-import com.marcos.testeWkTechnology.entities.dto.DoadorDeSangueDTO;
-import com.marcos.testeWkTechnology.entities.dto.IMCMedioPorFaixaIdadeDTO;
-import com.marcos.testeWkTechnology.entities.dto.PercentualObesosGeneroDTO;
-import com.marcos.testeWkTechnology.entities.dto.QuantidadePorEstadoDTO;
+import com.marcos.testeWkTechnology.dto.*;
 import com.marcos.testeWkTechnology.services.DoadorDeSangueService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,5 +33,14 @@ public class DoadorDeSangueResource {
     @GetMapping("/percentual-obesos-genero")
     public ResponseEntity<List<PercentualObesosGeneroDTO>> getPercentualObesosGenero(){
         return ResponseEntity.ok().body(service.getPercentualObesosGenero());
+    }
+    @GetMapping("/media-idade-por-tipo-sanguineo")
+    public ResponseEntity<List<MediaIdadePorTipoSanguineoDTO>> getMediaIdadePorTipoSaguineo(){
+        return ResponseEntity.ok().body(service.getMediaIdadePorTipoSaguineo());
+    }
+
+    @GetMapping("/quantidade-possiveis-doadores")
+    public ResponseEntity<List<QuantidadeDoadoresPorTipoSanguineoReceptorDTO>> getQuantidadePossiveisDoadores(){
+        return ResponseEntity.ok().body(service.getQuantidadePossiveisDoadores());
     }
 }
