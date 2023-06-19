@@ -39,11 +39,9 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { UserCreateComponent } from './components/user/user-create/user-create.component';
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
 import { UserDeleteComponent } from './components/user/user-delete/user-delete.component';
-import { JewelCardComponent } from './components/jewel/jewel-card/jewel-card.component';
-import { JewelListComponent } from './components/jewel/jewel-list/jewel-list.component';
-import { JewelCreateComponent } from './components/jewel/jewel-create/jewel-create.component';
-import { JewelUpdateComponent } from './components/jewel/jewel-update/jewel-update.component';
-import { JewelDeleteComponent } from './components/jewel/jewel-delete/jewel-delete.component';
+import { QuantidadeDoadorPorEstadoComponent } from './components/quantidade-doador-por-estado/quantidade-doador-por-estado.component';
+import { ImcMedioPorFaixaComponent } from './components/imc-medio-por-faixa/imc-medio-por-faixa.component';
+import { PercentualObesosGeneroComponent } from './components/percentual-obesos-genero/percentual-obesos-genero.component';
 
 
 @NgModule({
@@ -57,11 +55,9 @@ import { JewelDeleteComponent } from './components/jewel/jewel-delete/jewel-dele
     UserCreateComponent,
     UserUpdateComponent,
     UserDeleteComponent,
-    JewelCardComponent,
-    JewelListComponent,
-    JewelCreateComponent,
-    JewelUpdateComponent,
-    JewelDeleteComponent,
+    QuantidadeDoadorPorEstadoComponent,
+    ImcMedioPorFaixaComponent,
+    PercentualObesosGeneroComponent,
   ],
   imports: [
     CommonModule,
@@ -90,7 +86,7 @@ import { JewelDeleteComponent } from './components/jewel/jewel-delete/jewel-dele
     MatCardModule,
     ToastrModule.forRoot({
     timeOut: 10000,
-    positionClass: 'toast-bottom-right',
+    positionClass: 'toast-top-right',
     preventDuplicates: true,
     }),
   ],

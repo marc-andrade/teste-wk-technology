@@ -1,40 +1,39 @@
 <mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
-      <mat-nav-list class="nav-list">
-        <a mat-list-item routerLink="home">
-            <i class="material-icons">home</i>
-            Home
-        </a>
-        <a mat-list-item routerLink="catalog">
-          <i class="material-icons">assignment</i>
-          Catálogo
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="home">
+        <i class="material-icons">home</i>
+        Home
       </a>
-        <a mat-list-item routerLink="users">
-            <i class="material-icons">account_circle</i>
-            Admin
-        </a>
-        <a mat-list-item routerLink="jewels">
-          <i class="material-icons">person</i>
-          Operador
-       </a>
-        <a mat-list-item href="https://github.com/marc-andrade/MRC-jewels-catalog-frontend" target="_blank">
-            <i class="material-icons">code</i>
-            GitHub
-        </a>
-        <a mat-list-item (click)="logout()">
-            <i class="material-icons">logout</i>
-            Logout
-        </a>
-      </mat-nav-list>
-    </mat-drawer>
-  
-    <div class="sidenav-content">
-      <app-header></app-header>
-      <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <router-outlet></router-outlet>
-    </div>
-  
-  </mat-drawer-container>
-  
+      <a mat-list-item routerLink="quantidade-doador">
+        <i class="material-icons">assignment</i>
+        Quantidade Doador Por Estado
+      </a>
+      <a mat-list-item routerLink="imc-medio-por-faixa-idade">
+        <i class="material-icons">assignment</i>
+        IMC médio por Faixa de Idade
+      </a>
+      <a mat-list-item routerLink="percentual-obesos-genero">
+        <i class="material-icons">assignment</i>
+        Percentual de Obesos por Gênero
+      </a>
+      <a mat-list-item routerLink="users">
+        <i class="material-icons">account_circle</i>
+        Admin
+      </a>
+      <a mat-list-item (click)="logout()">
+        <i class="material-icons">logout</i>
+        Logout
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <app-header></app-header>
+    <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

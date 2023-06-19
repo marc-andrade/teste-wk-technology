@@ -56,6 +56,7 @@ public class DoadorDeSangueService {
                 }
             }
             double imcMedio = contador > 0 ? somaIMC / contador : 0;
+            imcMedio = Math.round(imcMedio * 100.0) / 100.0;
 
             String faixaIdade = String.format("%d a %d anos", faixaInicial, faixaFinal);
 

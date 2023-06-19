@@ -8,26 +8,22 @@ import { UserDeleteComponent } from './components/user/user-delete/user-delete.c
 import { UserCreateComponent } from './components/user/user-create/user-create.component';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
-import { JewelCardComponent } from './components/jewel/jewel-card/jewel-card.component';
-import { JewelListComponent } from './components/jewel/jewel-list/jewel-list.component';
-import { JewelCreateComponent } from './components/jewel/jewel-create/jewel-create.component';
-import { JewelUpdateComponent } from './components/jewel/jewel-update/jewel-update.component';
-import { JewelDeleteComponent } from './components/jewel/jewel-delete/jewel-delete.component';
+import { QuantidadeDoadorPorEstadoComponent } from './components/quantidade-doador-por-estado/quantidade-doador-por-estado.component';
+import { ImcMedioPorFaixaComponent } from './components/imc-medio-por-faixa/imc-medio-por-faixa.component';
+import { PercentualObesosGeneroComponent } from './components/percentual-obesos-genero/percentual-obesos-genero.component';
 
 const routes: Routes = [
 
   {path: 'login', component: LoginComponent},
-  {path: '', component: NavComponent, children: [
+  {path: '', component: NavComponent, canActivate:[AuthGuard], children: [
   {path: 'home', component: HomeComponent},
-  {path: 'catalog', component: JewelCardComponent},
-  {path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
-  {path: 'users/create', component: UserCreateComponent, canActivate: [AuthGuard] },
-  {path: 'users/update/:id', component: UserUpdateComponent, canActivate: [AuthGuard] },
-  {path: 'users/delete/:id', component: UserDeleteComponent, canActivate: [AuthGuard] },
-  {path: 'jewels', component: JewelListComponent, canActivate: [AuthGuard] },
-  {path: 'jewels/create', component: JewelCreateComponent, canActivate: [AuthGuard] },
-  {path: 'jewels/update/:id', component: JewelUpdateComponent, canActivate: [AuthGuard] },
-  {path: 'jewels/delete/:id', component: JewelDeleteComponent, canActivate: [AuthGuard] },
+  {path: 'users', component: UserListComponent},
+  {path: 'users/create', component: UserCreateComponent},
+  {path: 'users/update/:id', component: UserUpdateComponent},
+  {path: 'users/delete/:id', component: UserDeleteComponent},
+  {path: 'quantidade-doador', component: QuantidadeDoadorPorEstadoComponent},
+  {path: 'imc-medio-por-faixa-idade', component: ImcMedioPorFaixaComponent},
+  {path: 'percentual-obesos-genero', component: PercentualObesosGeneroComponent},
   ]
   }
   ];

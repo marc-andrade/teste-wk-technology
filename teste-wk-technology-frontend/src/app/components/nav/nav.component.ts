@@ -19,8 +19,8 @@ export class NavComponent implements OnInit {
   }
 
   logout(){
-    if(localStorage != null){
-      this.router.navigate(['home']);
+    if(localStorage != undefined){
+      this.router.navigate(['login']);
       this.authService.logout();
       this.toast.info('Logout realizado com sucesso', 'Logout')
     }
