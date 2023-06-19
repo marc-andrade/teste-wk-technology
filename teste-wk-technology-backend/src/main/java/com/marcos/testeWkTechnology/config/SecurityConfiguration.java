@@ -43,7 +43,7 @@ public class SecurityConfiguration {
                 .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(antMatcher("/login/token/**")).permitAll()
                 .requestMatchers(antMatcher("/users/**")).hasRole("ADMIN")
-                .requestMatchers(antMatcher("/doadores/**")).permitAll()
+                .requestMatchers(antMatcher("/doadores/**")).hasRole("ADMIN")
                 .anyRequest().authenticated());
 
         http
