@@ -4,20 +4,22 @@
  
  .sidenav {
     width: 13rem;
-    color: rgb(90, 237, 131);
-    background-color: rgb(31, 23, 23);
+    color: white;
+    background: #720101;
  }
  
  .sidenav a {
-    color: rgb(90, 237, 131);
+    color: white;
+    font-size: 0.85rem;
+    margin-top: .8rem;
  }
  
  .sidenav i {
     margin-right: .6rem;
  }
- 
+
  .menu {
     margin: 1rem 0 0 1rem;
-    color: rgb(90, 237, 131);
-    background: rgb(31, 23, 23);
+    color: white;
+    background: #720101;
  }

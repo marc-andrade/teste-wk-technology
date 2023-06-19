@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -43,6 +44,7 @@ public class SecurityConfiguration {
                 .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(antMatcher("/login/token/**")).permitAll()
                 .requestMatchers(antMatcher("/users/**")).hasRole("ADMIN")
+                .requestMatchers(antMatcher(HttpMethod.POST,"/doadores/**")).permitAll()
                 .requestMatchers(antMatcher("/doadores/**")).hasRole("ADMIN")
                 .anyRequest().authenticated());
 
