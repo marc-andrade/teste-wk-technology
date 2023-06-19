@@ -42,6 +42,8 @@ import { UserDeleteComponent } from './components/user/user-delete/user-delete.c
 import { QuantidadeDoadorPorEstadoComponent } from './components/quantidade-doador-por-estado/quantidade-doador-por-estado.component';
 import { ImcMedioPorFaixaComponent } from './components/imc-medio-por-faixa/imc-medio-por-faixa.component';
 import { PercentualObesosGeneroComponent } from './components/percentual-obesos-genero/percentual-obesos-genero.component';
+import { MediaIdadeTipoSanguineoComponent } from './components/media-idade-tipo-sanguineo/media-idade-tipo-sanguineo.component';
+import { QuantidadePossiveisDoadoresComponent } from './components/quantidade-possiveis-doadores/quantidade-possiveis-doadores.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { PercentualObesosGeneroComponent } from './components/percentual-obesos-
     QuantidadeDoadorPorEstadoComponent,
     ImcMedioPorFaixaComponent,
     PercentualObesosGeneroComponent,
+    MediaIdadeTipoSanguineoComponent,
+    QuantidadePossiveisDoadoresComponent,
   ],
   imports: [
     CommonModule,

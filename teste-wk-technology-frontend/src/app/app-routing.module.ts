@@ -11,6 +11,8 @@ import { UserUpdateComponent } from './components/user/user-update/user-update.c
 import { QuantidadeDoadorPorEstadoComponent } from './components/quantidade-doador-por-estado/quantidade-doador-por-estado.component';
 import { ImcMedioPorFaixaComponent } from './components/imc-medio-por-faixa/imc-medio-por-faixa.component';
 import { PercentualObesosGeneroComponent } from './components/percentual-obesos-genero/percentual-obesos-genero.component';
+import { MediaIdadeTipoSanguineoComponent } from './components/media-idade-tipo-sanguineo/media-idade-tipo-sanguineo.component';
+import { QuantidadePossiveisDoadoresComponent } from './components/quantidade-possiveis-doadores/quantidade-possiveis-doadores.component';
 
 const routes: Routes = [
 
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path: 'quantidade-doador', component: QuantidadeDoadorPorEstadoComponent},
   {path: 'imc-medio-por-faixa-idade', component: ImcMedioPorFaixaComponent},
   {path: 'percentual-obesos-genero', component: PercentualObesosGeneroComponent},
+  {path: 'media-idade-tipo-sanguneo', component: MediaIdadeTipoSanguineoComponent},
+  {path: 'quantidade-possiveis-doadores', component: QuantidadePossiveisDoadoresComponent},
   ]
   }
   ];

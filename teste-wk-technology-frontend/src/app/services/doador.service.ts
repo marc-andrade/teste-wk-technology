@@ -32,7 +32,7 @@ export class DoadorService {
   }
 
   quantidadePossiveisDoadores(): Observable<QuantidadeDoadoresPorTipoSanguineoReceptorDTO[]> {
-    return this.http.get<QuantidadeDoadoresPorTipoSanguineoReceptorDTO[]>(`${API_CONFIG.baseUrl}/doadores/media-idade-por-tipo-sanguineo`);
+    return this.http.get<QuantidadeDoadoresPorTipoSanguineoReceptorDTO[]>(`${API_CONFIG.baseUrl}/doadores/quantidade-possiveis-doadores`);
   }
 
 }
