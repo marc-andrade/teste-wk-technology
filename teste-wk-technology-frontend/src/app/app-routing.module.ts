@@ -15,9 +15,9 @@ import { JewelUpdateComponent } from './components/jewel/jewel-update/jewel-upda
 import { JewelDeleteComponent } from './components/jewel/jewel-delete/jewel-delete.component';
 
 const routes: Routes = [
-  
-  { path: '', component: NavComponent, children: [
+
   {path: 'login', component: LoginComponent},
+  {path: '', component: NavComponent, children: [
   {path: 'home', component: HomeComponent},
   {path: 'catalog', component: JewelCardComponent},
   {path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
